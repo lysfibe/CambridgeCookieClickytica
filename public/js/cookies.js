@@ -1,11 +1,19 @@
 $(function cookies() {
-	const state = {
-		posts: 0,
-		postBonus: 0,
-		linkedAccounts: 0,
-		linkedAccountPopularityMetric: 1,
-		linkedAccountBackoff: 10000
-	}
+	const state = (function loadState() {
+		const serialised = localStorage.getItem('serial-state')
+		if (serialised != null) {
+			return JSON.parse(serialised)
+		} else {
+			return {
+				posts: 0,
+				postBonus: 0,
+				linkedAccounts: 0,
+				linkedAccountPopularityMetric: 1,
+				linkedAccountBackoff: 10000
+			}
+		}
+	}())
+
 
 	let linkedAccountTimer = 0
 	let lastTick = performance.now()
@@ -16,27 +24,31 @@ $(function cookies() {
 		return 1 + state.postBonus
 	}
 
-	function addPost(n = 1) {
-		state.posts += n
-		stateListeners.map(l => l(state))
+	const els = {
+		posts: $('#posts-count'),
+		linkedAccounts: $('#accounts-count'),
 	}
 
+	function addPost(n = 1) {
+		let oldState = Object.assign({}, state)
+		state.posts += n
+		stateListeners.map(l => l(oldState, state))
+	}
+	
 	function addLinkedAccount(n = 1) {
 		if (state.linkedAccounts < 1 && state.linkedAccounts + n > 0) {
 			console.log("foo")
 			linkedAccountTimer = 0
 			setTimeout(() => tickLinkedAccount(performance.now()))
 		}
+		let oldState = Object.assign({}, state)
 		state.linkedAccounts += n
-		stateListeners.map(l => l(state))
+		stateListeners.map(l => l(oldState, state))
 	}
 
 	$(document.body).on('click', '#add-post', () => {
 		addPost(getStateModifiers())
 	})
-
-
-
 
 	function tickLinkedAccount(timestamp) {
 		const delta = timestamp - lastTick
@@ -50,6 +62,12 @@ $(function cookies() {
 		
 		setTimeout(() => tickLinkedAccount(performance.now()))
 	}
+
+	stateListeners.push((old, current) => {
+		if (old.posts !== current.posts) {
+			ui.updatePosts(current.posts)
+		}
+	})
 
 	window._debug = {
 		addLinkedAccount,
