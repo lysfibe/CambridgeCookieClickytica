@@ -11,7 +11,8 @@ const defaultData = { path: 'data/trump.txt' };
 // Some options to generate Twitter-ready strings
 const defaultOptions = {
     minLength: 100,
-    maxLength: 156
+    maxLength: 156,
+    stateSize: 1
 };
 
 module.exports = { init };
