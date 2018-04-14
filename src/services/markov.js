@@ -13,7 +13,7 @@ const defaultData = fs.readFileSync(defaultCorpusPath).toString();
 // Some options to generate Twitter-ready strings
 const defaultOptions = {
     minWords: 10,
-    maxLength: 280
+    maxLength: 156
 };
 
 module.exports = { init };
@@ -33,7 +33,7 @@ async function init(data, options) {
 
         // Convenience method
         markov.string = opt => markov.generateSentence(opt).then(r => r.string);
-        
+
         return markov;
     } catch (err) {
         console.error('Markov died:\n', err);
@@ -63,4 +63,4 @@ function setFilter(options, data) {
 }
 
 console.log('Initializing Markov');
-init().then(console.log('Markov is ready'));
+module.exports.default = init().then(console.log('Markov is ready'));
