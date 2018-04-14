@@ -127,9 +127,8 @@ $(function cookies() {
 			price: 10,
 			purchased: 0,
 			rate: 10,
-			onPurchase: addLinkedAccount,
 			perks: {
-				postBonus: 5
+				postBonus: 1
 			}
 		},
 		{
@@ -139,9 +138,6 @@ $(function cookies() {
 			purchased: 0,
 			rate: 50,
 			onPurchase: addLinkedAccount,
-			perks: {
-				postBonus: 25
-			}
 		},
 		{
 			name: 'Ashley Madison',
@@ -149,10 +145,7 @@ $(function cookies() {
 			price: 250,
 			purchased: 0,
 			rate: 250,
-			onPurchase: addLinkedAccount,
-			perks: {
-				postBonus: 125
-			}
+			onPurchase: () => addLinkedAccount(3),
 		},
 		{
 			name: 'Cambridge Analytica',
@@ -160,7 +153,6 @@ $(function cookies() {
 			price: 1250,
 			purchased: 0,
 			rate: 1250,
-			onPurchase: addLinkedAccount,
 			perks: {
 				postBonus: 625
 			}
@@ -171,7 +163,6 @@ $(function cookies() {
 			price: 1250,
 			purchased: 0,
 			rate: 1250,
-			onPurchase: addLinkedAccount,
 			perks: {
 				postBonus: 625
 			}
