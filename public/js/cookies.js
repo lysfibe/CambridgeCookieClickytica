@@ -228,27 +228,15 @@ $(function cookies() {
 			// window.innerWidth / 100 * Math.random()
 			
 			setTimeout(function() {
-				$( '.realthumb' ).addClass('animated rollIn');
+				$( image ).addClass('animated rollIn')
 				setTimeout(function() {
-					$( '.realthumb' ).removeClass('rollIn');
-					$( '.realthumb' ).addClass('rollOut');
-				}, 500);
-			}, 125);
-
-			// function dothumbo() {
-			// 	const now = Date.now()
-			// 	const delta = now - lastTime
-			// 	// console.log(delta)
-			// 	image.style.left = parseInt(image.style.left, 10) - (speed * delta)
-			// 	if (image.style.left + image.width > 10) {
-			// 		setTimeout(dothumbo)
-			// 	} else {
-			// 		document.body.removeChild(image)
-			// 	}
-			// }
-			
-			// document.body.appendChild(image)
-			// setTimeout(dothumbo)
+					$( image ).removeClass('rollIn')
+					$( image ).addClass('rollOut')
+					setTimeout(function() {
+						$( image ).remove()
+					}, 750)
+				}, 500)
+			}, 125)
 		}
 	}
 
