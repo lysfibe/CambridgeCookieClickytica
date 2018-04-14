@@ -3,7 +3,7 @@ $(function cookies() {
 	const els = {
 		posts: $('#post-count'),
 		linkedAccounts: $('#linked-accounts-count'),
-		buyableLists: $(''),
+		buyableLists: $('#firend-requst_continasd'),
 	}
 
 	const ui = {
@@ -14,7 +14,10 @@ $(function cookies() {
 			els.linkedAccounts.text(n)
 		},
 		updateBuyable(list) {
-			
+			const elms = list.map(createFriendRequest)
+			els.buyableLists.text('')
+			console.log(els.buyableLists)
+			elms.forEach(el => els.buyableLists[0].appendChild(el))
 		},
 	}
 
@@ -36,6 +39,55 @@ $(function cookies() {
 	ui.updatePosts(state.posts)
 	ui.updateLinked(state.linkedAccounts)
 
+
+	function createFriendRequest(data) {
+		const price = (data.price + (data.purchased * data.rate))
+		const container = document.createElement('div')
+		container.classList.add('friend-request')
+
+		const infoContainer = document.createElement('div')
+		infoContainer.classList.add('friend-request__info')
+
+		const title = document.createElement('h4')
+		title.textContent = data.name
+
+		const content = document.createElement('p')
+		content.textContent = data.content
+
+		const button = document.createElement('button')
+		button.textContent = 'Accept Friend Request for ' + price + ' posts'
+		button.addEventListener('click', function() {
+			addPost(-price)
+			if (data.onPurchase) {
+				data.onPurchase()
+			} else {
+				bought.push(data)
+			}
+
+			container.parentNode.removeChild(container)
+		})
+
+		infoContainer.appendChild(title)
+		infoContainer.appendChild(content)
+		infoContainer.appendChild(button)
+
+		container.appendChild(infoContainer)
+
+		return container
+
+		/**
+		 * 
+					<div class="friend-request">
+						<div class="friend-request__info">
+							<h4>AggregateIQ</h4>
+							<p>
+								AggregateIQ delivers proven technologies and data driven strategies that help you make timely decisions, reach new audiences and ultimately achieve your goals.
+							</p>
+							<button>Accept Friend Request for 750 posts</button>
+						</div>
+					</div>
+		 */
+	}
 	let locked = [
 		{
 			name: '',
@@ -44,7 +96,7 @@ $(function cookies() {
 			purchased: 0,
 			rate: 10,
 			perks: {
-				postBonus
+				postBonus: 123
 			}
 		},
 		{
