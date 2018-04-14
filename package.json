@@ -25,7 +25,8 @@
   "dependencies": {
     "@commander-lol/koa-mustache": "^1.0.3",
     "@commander-lol/server": "^1.0.1",
-    "koa-socket": "^4.4.0"
+    "koa-socket": "^4.4.0",
+    "markov-strings": "^1.4.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.3"
