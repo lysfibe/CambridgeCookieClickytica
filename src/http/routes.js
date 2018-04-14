@@ -10,7 +10,8 @@ module.exports = function (router) {
 }
 
 async function getPosts(number = 10) {
-	const m = await markov.default;
+	//const m = await markov.default;
+	const m = await markov.init({ path: 'data/tweets.txt' }, { stateSize: 1 });
 	const tasks = [];
 	for (let i = 0; i < number; i++) {
 		tasks.push(m.string());
