@@ -122,22 +122,59 @@ $(function cookies() {
 	}
 	let locked = [
 		{
-			name: '',
-			content: 'Increase your PPC and get an extra Post Per Click',
+			name: 'CubeYou',
+			content: 'Our platform brings together the most robust consumer data sources available, both online and offline.',
 			price: 10,
 			purchased: 0,
 			rate: 10,
+			onPurchase: addLinkedAccount,
 			perks: {
-				postBonus: 123
+				postBonus: 5
 			}
 		},
 		{
-			name: '',
-			content: 'Link your friends account',
+			name: 'AggregateIQ',
+			content: 'AggregateIQ delivers proven technologies and data driven strategies that help you make timely decisions, reach new audiences and ultimately achieve your goals.',
 			price: 50,
 			purchased: 0,
 			rate: 50,
 			onPurchase: addLinkedAccount,
+			perks: {
+				postBonus: 25
+			}
+		},
+		{
+			name: 'Ashley Madison',
+			content: 'Meet bored men & lonely housewives. Define your experience, and live life to the fullest! Life is short. Have an affair.®',
+			price: 250,
+			purchased: 0,
+			rate: 250,
+			onPurchase: addLinkedAccount,
+			perks: {
+				postBonus: 125
+			}
+		},
+		{
+			name: 'Cambridge Analytica',
+			content: 'Data drives all we do. Cambridge Analytica uses data to change audience behavior.',
+			price: 1250,
+			purchased: 0,
+			rate: 1250,
+			onPurchase: addLinkedAccount,
+			perks: {
+				postBonus: 625
+			}
+		},
+		{
+			name: 'IBM',
+			content: 'Put the power of cognitive computing to work for you to gain greater insights so you can innovate faster.',
+			price: 1250,
+			purchased: 0,
+			rate: 1250,
+			onPurchase: addLinkedAccount,
+			perks: {
+				postBonus: 625
+			}
 		}
 	]
 	let buyable = []
