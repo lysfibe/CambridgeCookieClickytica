@@ -5,10 +5,8 @@
 const fs = require('fs-extra');
 const Markov = require('markov-strings');
 
-const defaultCorpusPath = 'src/services/defaultCorpus.txt';
-
 // Load default data
-const defaultData = { path: defaultCorpusPath };
+const defaultData = { path: 'data/trump.txt' };
 
 // Some options to generate Twitter-ready strings
 const defaultOptions = {
