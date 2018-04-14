@@ -17,7 +17,6 @@ $(function cookies() {
 		updateBuyable(list) {
 			const elms = list.map(createFriendRequest)
 			els.buyableLists.text('')
-			console.log(els.buyableLists)
 			elms.forEach(el => els.buyableLists[0].appendChild(el))
 		},
 	}
@@ -189,12 +188,15 @@ $(function cookies() {
 	}
 
 	function addPost(n = 1) {
+		if (state.posts > 20) {
+			$( ".posts" ).slice( -n ).remove()
+		}
 		let oldState = Object.assign({}, state)
 		state.posts += n
 		stateListeners.map(l => l(oldState, state))
 		if (n > 0) {
 			fetchPosts(n).then(renderPosts)
-			triggerRealThumb(n)
+			triggerRealThumb(n < 10 ? n : 10)
 		}
 	}
 	
@@ -251,6 +253,14 @@ $(function cookies() {
 		
 		if (linkedAccountTimer > state.linkedAccountBackoff) {
 			linkedAccountTimer -= state.linkedAccountBackoff
+			
+			var realPostCount = $('.post').length
+			console.log(realPostCount)
+
+			if (realPostCount > 20) {
+				$( '.post' ).slice( -(realPostCount - 20) ).remove();
+			}
+
 			addPost(state.linkedAccounts * state.linkedAccountPopularityMetric)
 		}
 		
