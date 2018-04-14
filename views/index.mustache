@@ -12,6 +12,13 @@
 		box-sizing: border-box;
 		font-family: Arial, Helvetica, sans-serif;
 		font-size: 14px;
+		transition: all 0.1s ease-out;
+	}
+
+	a
+	{
+		color: var(--link-blue);
+		text-decoration: none;
 	}
 
 	.site-header
@@ -91,9 +98,13 @@
 		width: 500px;
 	}
 
-	.container--friends
+	.container--multipliers
 	{
 		width: 310px;
+		border: 1px solid #dddfe2;
+		background-color: #ffffff;
+		border-radius: 5px;
+		padding: 12px;
 	}
 
 	.post
@@ -180,6 +191,65 @@
 		right: 0;
 		text-align: center;
 	}
+
+	.post__footer
+	{
+		text-align: right;
+	}
+
+	.cookie-thumb-button
+	{
+		height: 185px;
+		width: 185px;
+		border: 1px solid #dddfe2;
+		background-color: white;
+		border-radius: 5px;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.cookie-thumb-button img
+	{
+		height: 40px;
+		width: 40px;
+	}
+
+	.cookie-thumb-button:hover img
+	{
+		height: 60px;
+		width: 60px;
+	}
+
+	small a
+	{
+		font-size: inherit;
+	}
+
+	.multipliers__header
+	{
+		padding: 0;
+		margin-top: 0;
+		color: var(--secondary-dark);
+	}
+
+	.multiplier img
+	{
+		width: 15px;
+		vertical-align: bottom;
+	}
+
+	.multiplier__label
+	{
+		color: var(--action-blue);
+		font-weight: bold;
+	}
+
+	.multiplier__value
+	{
+		float: right;
+		font-weight: bold;
+		color: var(--primary-dark);
+	}
 </style>
 
 <body>
@@ -199,9 +269,14 @@
 	</div>
 	<div class="main">
 		<div class="outer-container outer-container--main">
+			{{! THE COOKIE BUTTON }}
 			<div id="cookie" class="container container--cookie">
-				cookie goes here
+				<button class="cookie-thumb-button" id="add-post">
+					<img src="/images/thumb2.svg">
+				</button>
 			</div>
+
+			{{! NEWS FEED }}
 			<div id="news-feed" class="container container--news-feed">
 				{{! A post template }}
 				<article data-post-id="" class="post">
@@ -217,47 +292,51 @@
 					<p class="post__content">
 						Lorum Ipsum Lorum Ipsum Lorum Ipsum Lorum Ipsum Decorum Ipsum Lorum Ipsum Lorum Ipsum Lorum Ipsum.
 					</p>
-					<div class="post__interactions">
-						<i class="">Like</i>
-						<i class="">Comments</i>
-						<i class="">Share</i>
+					<div class="post__footer">
+						<a class="twitter-share-button"
+							href="https://twitter.com/intent/tweet?text=wangle%20dangle%20http%3A%2F%2Fanaclytica.apps.lysfibe.co.uk">
+							Tweet This!
+						</a>
 					</div>
-					<div class="post__reactions">
-
-						A few people liked this, a few people didn't, can't please them all
-					</div>
-					<a class="twitter-share-button"
-						href="https://twitter.com/intent/tweet?text=wangle%20dangle%20http%3A%2F%2Fanaclytica.apps.lysfibe.co.uk">
-						Tweet This!
-					</a>
 				</article>
 			</div>
-			<div id="friends" class="container container--friends">
-				friends go here
+
+			{{! MULTIPLIERS }}
+			<div id="multipliers" class="container multipliers">
+				<div class="container--multipliers current-multipliers">
+					<h3 class="multipliers__header">Multipliers</h3>
+					<div class="multiplier multiplier--linked-account-popularity">
+						<img src="/images/multiplier.png">	
+						<span class="multiplier__label">Linked Account Popularity</span>
+						<span id="linked-account-popularity-multiplier-display" class="multiplier__value">1</span>
+					</div>
+				</div>
 			</div>
 		</div>
 
 		<div class="footer">
-			<small>This is not affiliated with the obvious parties for obvious reasons</small>
+			<small>This is not affiliated with Facebook by the way</small>
 			<br>
-			<small>Just Another LysFibe Production</small>
+			<small>We use a blend of the latest tech, including RealThumb®</small>
+			<br>
+			<small><a href="https://twitter.com/lysfibe">Just Another LysFibe Production</a></small>
 		</div>
 	</div>
 	<script async>
-	window.twttr = (function(d, s, id) {
-	var js, fjs = d.getElementsByTagName(s)[0],
-	t = window.twttr || {};
-	if (d.getElementById(id)) return t;
-	js = d.createElement(s);
-	js.id = id;
-	js.src = "https://platform.twitter.com/widgets.js";
-	fjs.parentNode.insertBefore(js, fjs);
-	t._e = [];
-	t.ready = function(f) {
-	t._e.push(f);
-	};
-	return t;
-	}(document, "script", "twitter-wjs"));
+		window.twttr = (function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0],
+		t = window.twttr || {};
+		if (d.getElementById(id)) return t;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "https://platform.twitter.com/widgets.js";
+		fjs.parentNode.insertBefore(js, fjs);
+		t._e = [];
+		t.ready = function(f) {
+		t._e.push(f);
+		};
+		return t;
+		}(document, "script", "twitter-wjs"));
 	</script>
 	<script
 		src="https://code.jquery.com/jquery-3.3.1.min.js"
