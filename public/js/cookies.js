@@ -211,7 +211,7 @@ $(function cookies() {
 	function triggerRealThumb(thumbs) {
 		for (let i = 0; i < thumbs; i += 1) {
 			
-			const width = Math.floor(200 / Math.random())
+			const width = Math.floor(Math.random() * (150 - 20)) + 20
 			const height = Math.floor(width * 1.33)
 			
 			const image = new Image(width, height)
