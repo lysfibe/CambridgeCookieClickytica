@@ -145,6 +145,10 @@
 
 						A few people liked this, a few people didn't, can't please them all
 					</div>
+					<a class="twitter-share-button"
+						href="https://twitter.com/intent/tweet?text=wangle%20dangle%20http%3A%2F%2Fanaclytica.apps.lysfibe.co.uk">
+						Tweet This!
+					</a>
 				</article>
 			</div>
 			<div id="friends" class="container container--friends">
@@ -152,6 +156,22 @@
 			</div>
 		</div>
 	</div>
+	<script async>
+	window.twttr = (function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0],
+	t = window.twttr || {};
+	if (d.getElementById(id)) return t;
+	js = d.createElement(s);
+	js.id = id;
+	js.src = "https://platform.twitter.com/widgets.js";
+	fjs.parentNode.insertBefore(js, fjs);
+	t._e = [];
+	t.ready = function(f) {
+	t._e.push(f);
+	};
+	return t;
+	}(document, "script", "twitter-wjs"));
+	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js" integrity="sha256-YFhaeQSVBgAFNN5z4I9YRB2jCuqc2nvypz0Q2eQzcx8=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js" integrity="sha256-YFhaeQSVBgAFNN5z4I9YRB2jCuqc2nvypz0Q2eQzcx8=" crossorigin="anonymous"></script>
 	<script src="/js/cookies.js"></script>
