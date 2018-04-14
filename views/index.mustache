@@ -1,7 +1,17 @@
 {{> head }}
 <style>
+	:root {
+		--primary-dark: #1d2129;
+		--secondary-dark: #616770; 
+		--fb-blue: #4267b2;
+		--link-blue: #365899;
+		--action-blue: #3578e5;
+	}
+
 	* {
 		box-sizing: border-box;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 14px;
 	}
 
 	.navigation
@@ -54,6 +64,52 @@
 	{
 		width: 310px;
 	}
+
+	.post
+	{
+		background-color: #ffffff;
+		border-radius: 5px;  
+		border: 1px solid #dddfe2;
+		padding: 12px;
+	}
+
+	.post span,
+	.post p
+	{
+		color: var(--primary-dark);
+	}
+
+	.post__header
+	{
+		display: flex;
+	}
+
+	.post__avatar
+	{
+		height: 40px;
+		width: 40px;
+		border-radius: 50%;
+		background-color: var(--action-blue);
+		margin-right: 12px;
+	}
+
+	.post__usermeta h3
+	{
+		color: var(--link-blue);
+		padding-bottom: 2px;	
+		margin: 4px 0 0 0;
+	}
+
+	.post__usermeta span
+	{
+		color: var(--secondary-dark);
+		font-size: 12px;
+	}
+
+	.post__interactions, .post__reactions
+	{
+		display: none;
+	}
 </style>
 
 <body>
@@ -66,6 +122,7 @@
 				cookie goes here
 			</div>
 			<div id="news-feed" class="container container--news-feed">
+				{{! A post template }}
 				<article data-post-id="" class="post">
 					<header class="post__header">
 						<div class="post__avatar">
@@ -85,6 +142,7 @@
 						<i class="">Share</i>
 					</div>
 					<div class="post__reactions">
+
 						A few people liked this, a few people didn't, can't please them all
 					</div>
 				</article>
