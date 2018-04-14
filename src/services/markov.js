@@ -12,7 +12,7 @@ const defaultData = { path: defaultCorpusPath };
 
 // Some options to generate Twitter-ready strings
 const defaultOptions = {
-    minWords: 10,
+    minLength: 100,
     maxLength: 156
 };
 

@@ -11,11 +11,11 @@ async function test() {
     console.log('TEST MARKOV DEFAULT:\n', await dm.string());
 
     // Test new model ----------------------------------------------------------
-    const m = await markov.init({path:'data/input.txt'});
+    const m = await markov.init({ path: 'data/input.txt' }, { stateSize: 1 });
 
     console.log('TEST MARKOV NO-OPT:\n', await m.string());
 
-    //console.log('TEST MARKOV 50 CHAR:\n', await m.string({ maxLength: 50 }));
+    console.log('TEST MARKOV 500 CHAR:\n', await m.string({ maxLength: 500 }));
 
     // Test performance
     let start = Date.now();
