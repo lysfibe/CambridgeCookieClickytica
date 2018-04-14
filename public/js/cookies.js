@@ -43,6 +43,9 @@ $(function cookies() {
 			price: 10,
 			purchased: 0,
 			rate: 10,
+			perks: {
+				postBonus
+			}
 		},
 		{
 			name: '',
@@ -50,6 +53,7 @@ $(function cookies() {
 			price: 50,
 			purchased: 0,
 			rate: 50,
+			onPurchase: addLinkedAccount,
 		}
 	]
 	let buyable = []
@@ -61,14 +65,16 @@ $(function cookies() {
 	const stateListeners = []
 
 	function getStateModifiers() {
-		return 1 + bought.map(p => p.perks.postBonus).reduce((t, c) => t + c, 0)
+		return 1 + bought.map(p => p.perks ? p.perks.postBonus : 0).reduce((t, c) => t + c, 0)
 	}
 
 	function addPost(n = 1) {
 		let oldState = Object.assign({}, state)
 		state.posts += n
 		stateListeners.map(l => l(oldState, state))
-		triggerRealThumb(n)
+		if (n > 0) {
+			triggerRealThumb(n)
+		}
 	}
 	
 	function addLinkedAccount(n = 1) {
