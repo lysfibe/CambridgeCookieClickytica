@@ -11,6 +11,11 @@
 		--action-blue: #3578e5;
 	}
 
+	body
+	{
+		background-color: #e9ebee;
+	}
+
 	* {
 		box-sizing: border-box;
 		font-family: Arial, Helvetica, sans-serif;
@@ -94,6 +99,7 @@
 	.container--cookie
 	{
 		width: 185px;
+		position: relative;
 	}
 
 	.container--news-feed
@@ -193,11 +199,10 @@
 
 	.footer
 	{
-		position: fixed;
-		bottom: 24px;
+		position: absolute;
 		left: 0;
 		right: 0;
-		text-align: center;
+		top: calc(100vh - 220px);
 	}
 
 	.post__footer
@@ -320,6 +325,14 @@
 				<button class="cookie-thumb-button" id="add-post">
 					<img src="/images/thumb2.svg">
 				</button>
+
+				<div class="footer">
+					<small>This is not affiliated with Facebook by the way</small>
+					<br>
+					<small>We use a blend of the latest tech, including RealThumb®</small>
+					<br>
+					<small><a href="https://twitter.com/lysfibe">Just Another LysFibe Production</a></small>
+				</div>
 			</div>
 
 			{{! NEWS FEED }}
@@ -391,13 +404,7 @@
 			</div>
 		</div>
 
-		<div class="footer">
-			<small>This is not affiliated with Facebook by the way</small>
-			<br>
-			<small>We use a blend of the latest tech, including RealThumb®</small>
-			<br>
-			<small><a href="https://twitter.com/lysfibe">Just Another LysFibe Production</a></small>
-		</div>
+		
 	</div>
 	<script async>
 		window.twttr = (function(d, s, id) {

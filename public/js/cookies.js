@@ -210,15 +210,30 @@ $(function cookies() {
 
 	function triggerRealThumb(thumbs) {
 		for (let i = 0; i < thumbs; i += 1) {
-			const image = new Image(75, 100)
+			
+			const width = Math.floor(200 / Math.random())
+			const height = Math.floor(width * 1.33)
+			
+			const image = new Image(width, height)
 			image.src = '/images/real_thumb.png'
-			image.className = 'animated realthumb'
+			image.className = 'realthumb'
 			image.style.position = 'absolute'
-			image.style.top = '300px'
-			image.style.left = (window.innerWidth / 2) + 'px'
+			image.style.opacity = 0
+			image.style.top = Math.floor(((window.innerHeight) * Math.random())) + 'px'
+			image.style.left = Math.floor(((window.innerWidth) * Math.random())) + 'px'
 			document.body.appendChild(image)
 			
-			setTimeout($( '.realthumb' ).addClass('rollIn'), 250);
+
+
+			// window.innerWidth / 100 * Math.random()
+			
+			setTimeout(function() {
+				$( '.realthumb' ).addClass('animated rollIn');
+				setTimeout(function() {
+					$( '.realthumb' ).removeClass('rollIn');
+					$( '.realthumb' ).addClass('rollOut');
+				}, 500);
+			}, 125);
 
 			// function dothumbo() {
 			// 	const now = Date.now()
