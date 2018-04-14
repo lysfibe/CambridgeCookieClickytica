@@ -32,7 +32,7 @@ $(function cookies() {
 				postBonus: 0,
 				linkedAccounts: 0,
 				linkedAccountPopularityMetric: 1,
-				linkedAccountBackoff: 10000
+				linkedAccountBackoff: 1000
 			}
 		}
 	}())
@@ -48,8 +48,10 @@ $(function cookies() {
 
 	function renderPosts(posts) {
 		posts.forEach(post => setTimeout(() => {
+			var id = "post" + Date.now();
+
 			els.newsFeed.prepend(`
-			<article data-post-id="" class="post">
+			<article id="${id}" data-post-id="${id}" class="post">
 			<header class="post__header">
 				<div class="post__avatar">
 					<img src="">
@@ -69,6 +71,12 @@ $(function cookies() {
 				</a>
 			</div>
 		</article>`)
+		
+		setTimeout(function() {
+			document.querySelector('#'+id).style.opacity = 1;
+		}, 250);
+		
+			
 		}, Math.random() * 2000))
 	}
 
@@ -201,31 +209,31 @@ $(function cookies() {
 	}
 
 	function triggerRealThumb(thumbs) {
-		return
 		for (let i = 0; i < thumbs; i += 1) {
-			const image = new Image(300, 400)
+			const image = new Image(75, 100)
 			image.src = '/images/real_thumb.png'
+			image.className = 'animated realthumb'
 			image.style.position = 'absolute'
-			image.style.top = String(0)
-			console.log(window.innerWidth)
-			image.left = String(window.innerWidth)
-			console.log(image.style)
-			let lastTime = Date.now()
-			let speed = 10
-			function dothumbo() {
-				const now = Date.now()
-				const delta = now - lastTime
-				// console.log(delta)
-				image.style.left = parseInt(image.style.left, 10) - (speed * delta)
-				if (image.style.left + image.width > 10) {
-					setTimeout(dothumbo)
-				} else {
-					document.body.removeChild(image)
-				}
-			}
-			
+			image.style.top = '300px'
+			image.style.left = (window.innerWidth / 2) + 'px'
 			document.body.appendChild(image)
-			setTimeout(dothumbo)
+			
+			setTimeout($( '.realthumb' ).addClass('rollIn'), 250);
+
+			// function dothumbo() {
+			// 	const now = Date.now()
+			// 	const delta = now - lastTime
+			// 	// console.log(delta)
+			// 	image.style.left = parseInt(image.style.left, 10) - (speed * delta)
+			// 	if (image.style.left + image.width > 10) {
+			// 		setTimeout(dothumbo)
+			// 	} else {
+			// 		document.body.removeChild(image)
+			// 	}
+			// }
+			
+			// document.body.appendChild(image)
+			// setTimeout(dothumbo)
 		}
 	}
 
