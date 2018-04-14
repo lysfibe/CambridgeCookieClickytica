@@ -14,7 +14,7 @@
 		font-size: 14px;
 	}
 
-	.navigation
+	.site-header
 	{
 		background-color: #4267b2;
 		position: fixed;
@@ -22,9 +22,31 @@
 		left: 0;
 		right: 0;
 		width: 100vw;
-		height: 40px;
+		padding: 12px;
 		box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
 	}
+
+	.logo-block,
+	.logo-block img
+	{
+		height: 24px;
+		width: 24px;
+	}
+
+	.title
+	{
+		margin-left: 10px;
+	}
+
+	.title h1
+	{
+		font-size: 18px;
+		line-height: 24px;
+		color: #ffffff; 
+		padding: 0;
+		margin: 0;
+	}
+
 
 	.main
 	{
@@ -42,6 +64,15 @@
 		width: 100%;
 		
 		display: flex;
+	}
+
+	.outer-container--site-header
+	{
+
+	}
+
+	.outer-container--main
+	{
 		justify-content: space-between;
 	}
 
@@ -110,14 +141,64 @@
 	{
 		display: none;
 	}
+
+	.stat
+	{
+		display: inline-block;
+		margin-left: 10px;
+	}
+
+	.stat > span
+	{
+		color: #ffffff;
+		line-height: 24px;
+		font-weight: bold;
+	}
+
+	.stat__label
+	{
+		margin-right: 4px;
+	}
+
+	.stat__count
+	{
+		background-color: rgba(0, 0, 0, 0.4);
+		padding: 2px 4px;
+		border-radius: 3px;
+	}
+
+	.stat-container
+	{
+		margin-left: auto;
+	}
+
+	.footer
+	{
+		position: fixed;
+		bottom: 24px;
+		left: 0;
+		right: 0;
+		text-align: center;
+	}
 </style>
 
 <body>
-	<nav class="navigation">
-		<li>Something</li>
-	</nav>
+	<div class="site-header">
+		<div class="outer-container outer-container--site-header">
+			<div class="logo-block">
+				<img src="/images/clickytica@2x.png">
+			</div>
+			<div class="title">
+				<h1>CambridgeCookieClickytica</h1>
+			</div>
+			<div class="stat-container">
+				<div class="stat stat--posts"><span class="stat__label">Posts</span><span class="stat__count" id="post-count">782</span></div>
+				<div class="stat stat--linked-accounts"><span class="stat__label">Linked Accounts</span><span class="stat__count" id="linked-accounts-count">12</span></div>
+			</div>
+		</div>
+	</div>
 	<div class="main">
-		<div class="outer-container">
+		<div class="outer-container outer-container--main">
 			<div id="cookie" class="container container--cookie">
 				cookie goes here
 			</div>
@@ -154,6 +235,12 @@
 			<div id="friends" class="container container--friends">
 				friends go here
 			</div>
+		</div>
+
+		<div class="footer">
+			<small>This is not affiliated with the obvious parties for obvious reasons</small>
+			<br>
+			<small>Just Another LysFibe Production</small>
 		</div>
 	</div>
 	<script async>
