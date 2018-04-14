@@ -2,13 +2,13 @@
  * Wrapper for Markov string generator.
  * See markovTest.js for example usage.
  */
-const fs = require("fs");
+const fs = require('fs-extra');
 const Markov = require('markov-strings');
 
 const defaultCorpusPath = 'src/services/defaultCorpus.txt';
 
 // Load default data
-const defaultData = fs.readFileSync(defaultCorpusPath).toString();
+const defaultData = { path: defaultCorpusPath };
 
 // Some options to generate Twitter-ready strings
 const defaultOptions = {
@@ -22,6 +22,9 @@ async function init(data, options) {
     try {
         data = data || defaultData;
         options = options || defaultOptions;
+
+        // Allow file paths
+        if (data.path) data = (await fs.readFile(data.path)).toString();
 
         data = clean(data);
 
