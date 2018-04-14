@@ -22,26 +22,38 @@
 		height: 100vh;
 		background-color: #e9ebee;
 		padding-top: 80px;
-		display: flex;
-		justify-content: space-between;
+		
 	}
 
 	.outer-container
 	{
+		margin: 0 auto;
+		max-width: 1024px;
+		width: 100%;
 		
+		display: flex;
+		justify-content: space-between;
 	}
 
 	.container
 	{
-		background-color: red;
+		
 	}
 
+	.container--cookie
+	{
+		width: 185px;
+	}
 
 	.container--news-feed
 	{
-		width: 
+		width: 500px;
 	}
 
+	.container--friends
+	{
+		width: 310px;
+	}
 </style>
 
 <body>
@@ -54,7 +66,28 @@
 				cookie goes here
 			</div>
 			<div id="news-feed" class="container container--news-feed">
-				feed goes here
+				<article data-post-id="" class="post">
+					<header class="post__header">
+						<div class="post__avatar">
+							<img src="">
+						</div>
+						<div class="post__usermeta">
+							<h3>Strong Eighty-Nine</h3>
+							<span>Southampton Central Hall</span>
+						</div>
+					</header>
+					<p class="post__content">
+						Lorum Ipsum Lorum Ipsum Lorum Ipsum Lorum Ipsum Decorum Ipsum Lorum Ipsum Lorum Ipsum Lorum Ipsum.
+					</p>
+					<div class="post__interactions">
+						<i class="">Like</i>
+						<i class="">Comments</i>
+						<i class="">Share</i>
+					</div>
+					<div class="post__reactions">
+						A few people liked this, a few people didn't, can't please them all
+					</div>
+				</article>
 			</div>
 			<div id="friends" class="container container--friends">
 				friends go here
