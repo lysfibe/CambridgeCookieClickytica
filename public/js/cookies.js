@@ -1,4 +1,19 @@
 $(function cookies() {
+
+	const els = {
+		posts: $('#post-count'),
+		linkedAccounts: $('#linked-accounts-count'),
+	}
+
+	const ui = {
+		updatePosts(n) {
+			els.posts.text(n)
+		},
+		updateLinked(n) {
+			els.linkedAccounts.text(n)
+		}
+	}
+
 	const state = (function loadState() {
 		const serialised = localStorage.getItem('serial-state')
 		if (serialised != null) {
@@ -14,6 +29,9 @@ $(function cookies() {
 		}
 	}())
 
+	ui.updatePosts(state.posts)
+	ui.updateLinked(state.linkedAccounts)
+
 
 	let linkedAccountTimer = 0
 	let lastTick = performance.now()
@@ -24,10 +42,6 @@ $(function cookies() {
 		return 1 + state.postBonus
 	}
 
-	const els = {
-		posts: $('#posts-count'),
-		linkedAccounts: $('#accounts-count'),
-	}
 
 	function addPost(n = 1) {
 		let oldState = Object.assign({}, state)
