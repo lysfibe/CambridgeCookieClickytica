@@ -4,7 +4,7 @@ const markov = require('../services/markov');
 module.exports = function (router) {
 	router.get('/', ctx => ctx.render('index', { title: 'CambridgeCookieClickytica' }))
 	router.get('/posts', async ctx => {
-		ctx.body = await getPosts();
+		ctx.body = await getPosts(ctx.query.number);
 	})
 	router.group('/api', require('./routes-api'))
 }
@@ -12,7 +12,7 @@ module.exports = function (router) {
 async function getPosts(number = 10) {
 	const m = await markov.default;
 	const tasks = [];
-	for (let i = 0; i < 10; i++) {
+	for (let i = 0; i < number; i++) {
 		tasks.push(m.string());
 	}
 	let posts = await Promise.all(tasks);
