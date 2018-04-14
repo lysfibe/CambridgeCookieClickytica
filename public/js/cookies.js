@@ -4,6 +4,7 @@ $(function cookies() {
 		posts: $('#post-count'),
 		linkedAccounts: $('#linked-accounts-count'),
 		buyableLists: $('#firend-requst_continasd'),
+		newsFeed: $('#news-feed'),
 	}
 
 	const ui = {
@@ -39,6 +40,37 @@ $(function cookies() {
 	ui.updatePosts(state.posts)
 	ui.updateLinked(state.linkedAccounts)
 
+	async function fetchPosts(n = 1) {
+		const res = await fetch('/posts?number=' + String(n))
+		const values = await res.json()
+		return values
+	}
+
+	function renderPosts(posts) {
+		posts.forEach(post => setTimeout(() => {
+			els.newsFeed.prepend(`
+			<article data-post-id="" class="post">
+			<header class="post__header">
+				<div class="post__avatar">
+					<img src="">
+				</div>
+				<div class="post__usermeta">
+					<h3>${post.username}</h3>
+					<span>Southampton Central Hall</span>
+				</div>
+			</header>
+			<p class="post__content">
+				${post.content}
+			</p>
+			<div class="post__footer">
+				<a class="twitter-share-button"
+					href="https://twitter.com/intent/tweet?text=${encodeURI(post.content)}http%3A%2F%2Fanaclytica.apps.lysfibe.co.uk">
+					Tweet This!
+				</a>
+			</div>
+		</article>`)
+		}, Math.random() * 2000))
+	}
 
 	function createFriendRequest(data) {
 		const price = (data.price + (data.purchased * data.rate))
@@ -125,6 +157,7 @@ $(function cookies() {
 		state.posts += n
 		stateListeners.map(l => l(oldState, state))
 		if (n > 0) {
+			fetchPosts(n).then(renderPosts)
 			triggerRealThumb(n)
 		}
 	}

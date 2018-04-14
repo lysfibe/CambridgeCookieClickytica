@@ -18,5 +18,5 @@ const socket = new Socket()
 socket.on('message', (event, data) => dispatcher.trigger(data, event))
 
 socket.attach(server)
-server.listen(8000)
-console.log("Listening on http://localhost:8000")
+server.listen(8100)
+console.log("Listening on http://localhost:8100")
