@@ -1,5 +1,5 @@
 module.exports = function (router) {
 	router.register('stream-posts', (data, event) => {
-		event.socket.emit({ foo: 123, bae: 243 })
+		event.socket.emit('my-lovely-babies', { foo: 123, bae: 243 })
 	})
 }
