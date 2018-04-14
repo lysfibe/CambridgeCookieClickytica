@@ -81,6 +81,9 @@ $(function cookies() {
 		if (old.posts !== current.posts) {
 			ui.updatePosts(current.posts)
 		}
+		if (old.linkedAccounts !== current.linkedAccounts) {
+			ui.updateLinked(current.linkedAccounts)
+		}
 	})
 
 	window._debug = {
