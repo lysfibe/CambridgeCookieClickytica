@@ -4,7 +4,7 @@ $(function cookies() {
 		postBonus: 0,
 		linkedAccounts: 0,
 		linkedAccountPopularityMetric: 1,
-		linkedAccountBackoff: 5000
+		linkedAccountBackoff: 10000
 	}
 
 	let linkedAccountTimer = 0
@@ -25,7 +25,7 @@ $(function cookies() {
 		if (state.linkedAccounts < 1 && state.linkedAccounts + n > 0) {
 			console.log("foo")
 			linkedAccountTimer = 0
-			tickLinkedAccount(performance.now())
+			setTimeout(() => tickLinkedAccount(performance.now()))
 		}
 		state.linkedAccounts += n
 		stateListeners.map(l => l(state))
@@ -36,15 +36,19 @@ $(function cookies() {
 	})
 
 
+
+
 	function tickLinkedAccount(timestamp) {
 		const delta = timestamp - lastTick
 		lastTick = performance.now()
-		linkedAccountTimer += lastTick
+		linkedAccountTimer += delta
+		
 		if (linkedAccountTimer > state.linkedAccountBackoff) {
 			linkedAccountTimer -= state.linkedAccountBackoff
 			addPost(state.linkedAccounts * state.linkedAccountPopularityMetric)
 		}
-		requestAnimationFrame(tickLinkedAccount)
+		
+		setTimeout(() => tickLinkedAccount(performance.now()))
 	}
 
 	window._debug = {
