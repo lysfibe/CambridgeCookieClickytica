@@ -1,3 +1,4 @@
+require('dotenv').config()
 const pathUtils = require('path')
 const server = new (require('@commander-lol/server'))
 const mustache = require('@commander-lol/koa-mustache')
@@ -18,5 +19,5 @@ const socket = new Socket()
 socket.on('message', (event, data) => dispatcher.trigger(data, event))
 
 socket.attach(server)
-server.listen(8100)
-console.log("Listening on http://localhost:8100")
+server.listen(process.env.PORT)
+console.log("Listening on http://localhost:" + process.env.PORT)
