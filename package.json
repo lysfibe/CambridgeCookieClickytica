@@ -1,0 +1,28 @@
+{
+  "name": "clickytica",
+  "version": "0.1.0",
+  "description": "It's like uber, but for pets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lysfibe/CambridgeCookieClickytica.git"
+  },
+  "contributors": [
+	  "Louis Capitanchik <louis@lysfibe.co.uk>",
+	  "Bethany Griggs <beth@lysfibe.co.uk>",
+	  "David Ralph <david@lysfibe.co.uk>",
+	  "Thomas Hewitt <tom@lysfibe.co.uk>"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/lysfibe/CambridgeCookieClickytica/issues"
+  },
+  "homepage": "https://github.com/lysfibe/CambridgeCookieClickytica#readme",
+  "dependencies": {
+    "@commander-lol/koa-mustache": "^1.0.3",
+    "@commander-lol/server": "^1.0.1"
+  }
+}
