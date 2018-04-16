@@ -65,7 +65,7 @@ $(function cookies() {
 			</p>
 			<div class="post__footer">
 				<a class="twitter-share-button"
-					href="https://twitter.com/intent/tweet?text=${encodeURI(post.content)}http%3A%2F%2Fanaclytica.apps.lysfibe.co.uk">
+					href="https://twitter.com/intent/tweet?text=${encodeURI(post.content)}%20http%3A%2F%2Fanaclytica.apps.louiscap.io">
 					Tweet This!
 				</a>
 			</div>
