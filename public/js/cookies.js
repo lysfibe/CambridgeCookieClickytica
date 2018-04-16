@@ -97,13 +97,14 @@ $(function cookies() {
 		button.textContent = 'Accept Friend Request for ' + price + ' posts'
 		button.addEventListener('click', function() {
 			addPost(-price)
+			data.purchased += 1
 			if (data.onPurchase) {
 				data.onPurchase()
 			} else {
 				bought.push(data)
 			}
 
-			container.parentNode.removeChild(container)
+			$(container).remove()
 		})
 
 		infoContainer.appendChild(title)
